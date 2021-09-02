@@ -4,10 +4,7 @@ const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const { merge } = require("webpack-merge");
-const { VeeValidate } = require("vee-validate");
 require("@babel/polyfill");
-
-// module.exports = {};
 
 module.exports = (env, opts) => {
 	const config = {
@@ -35,7 +32,8 @@ module.exports = (env, opts) => {
 				template: path.join(__dirname, "index.html"),
 			}),
 			new VueLoaderPlugin(),
-			// new VeeValidate(),
+
+			// CopyPlugin은 favicon이 필요할 때 사용되어집니다. assets/ 하위에 있는 파일들을 webpack build에 포함시킵니다.
 			// new CopyPlugin({
 			// 	patterns: [
 			// 		{

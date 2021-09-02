@@ -63,11 +63,8 @@ export default {
 			showModal: false,
 		};
 	},
+	// Vue 인스턴스가 마운트된 후 호출된다.
 	mounted() {
-		const apiAxios = axios.create({
-			baseURL: "http://local.ring2pay.com:9944",
-		});
-
 		apiAxios.get("/api/board").then((res) => {
 			if (res.status === 200) {
 				// res.data를 sort한다
@@ -114,9 +111,6 @@ export default {
 					this.list = res.data;
 				}
 			});
-		},
-		test() {
-			console.log(this.$refs.boardModal);
 		},
 		closing() {
 			this.showModal = false;
